@@ -25,3 +25,16 @@
 # vars_files
 # vars_prompt
 # vars
+# inventory vars
+
+- name: Demo on Dynamic Vars
+  hosts: all
+  tasks:
+    - name: Gather date
+      shell: date +%F
+      register: out
+    - name: Print Date
+      debug:
+        msg: Date = {{ out }}
+
+
