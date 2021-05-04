@@ -5,6 +5,9 @@
   vars:
     URL: play.example.com
     PROJECT: exammple
+  vars_prompt:
+    - name: URL
+      prompt: Enter URL
   tasks:
     - name: Print URL
       debug:
