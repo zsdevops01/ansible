@@ -28,7 +28,7 @@
 # inventory vars
 
 - name: Demo on Dynamic Vars
-  hosts: all
+  hosts: NEW
   tasks:
 
     - name: Gather date
@@ -46,3 +46,4 @@
     - name: Print DATE
       debug:
         msg: DATE = {{ DATE }}
+
