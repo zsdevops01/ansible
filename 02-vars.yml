@@ -1,7 +1,7 @@
 - name: Demo on Vars
   hosts: all
-  vars_files:
-    - example-vars.yml
+#  vars_files:
+#    - example-vars.yml
   vars:
     URL: play.example.com
     PROJECT: exammple
