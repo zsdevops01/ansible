@@ -1,5 +1,6 @@
 - name: Setup roboshop project
   hosts: all
+  become_user: yes
   tasks:
     - name: Apt Update
       apt:
