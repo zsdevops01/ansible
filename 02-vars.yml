@@ -5,10 +5,10 @@
   vars:
     URL: play.example.com
     PROJECT: exammple
-  vars_prompt:
-    - name: URL
-      prompt: Enter URL
-      private: no
+#  vars_prompt:
+#    - name: URL
+#      prompt: Enter URL
+#      private: no
   tasks:
     - name: Print URL
       debug:
@@ -20,6 +20,8 @@
         URL: task.example.com
 
 # Variable Precedence
+# command line vars with -e
 # Tasks
 # vars_files
+# vars_prompt
 # vars
