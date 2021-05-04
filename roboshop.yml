@@ -1,0 +1,8 @@
+- name: Setup roboshop project
+  hosts: all
+  tasks:
+    - name: Apt Update
+      apt:
+        name: nginx
+        update_cache: yes
+
