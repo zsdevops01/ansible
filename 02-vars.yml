@@ -30,11 +30,19 @@
 - name: Demo on Dynamic Vars
   hosts: all
   tasks:
+
     - name: Gather date
       shell: date +%F
       register: out
+
     - name: Print Date
       debug:
         msg: Date = {{ out.stdout }}
 
+    - name: Set a fact
+      set_fact:
+        DATE: "{{ out.stdout}}"
 
+    - name: Print DATE
+      debug:
+        msg: DATE = {{DATE}}
