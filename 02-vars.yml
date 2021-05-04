@@ -41,8 +41,8 @@
 
     - name: Set a fact
       set_fact:
-        DATE: "{{ out.stdout}}"
+        DATE: "{{ out.stdout }}"
 
     - name: Print DATE
       debug:
-        msg: DATE = {{DATE}}
+        msg: DATE = {{ DATE }}
