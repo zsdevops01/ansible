@@ -17,7 +17,7 @@
 
     - name: Download foo.conf
       get_url:
-        url: http://172.31.14.124:8081/repository/cart/cart-{{APP_VERSION}}.zip
+        url: http://172.31.14.124:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
         dest: /tmp/frontend.zip
         username: admin
         password: admin123
