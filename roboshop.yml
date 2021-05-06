@@ -4,3 +4,4 @@
   ## THis become can also be used at task level
   roles:
     - frontend
+     - mongodb
