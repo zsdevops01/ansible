@@ -12,7 +12,7 @@
 
     - name: Print last colum
       debug:
-        msg: "{{ URL.split('/').last }}"
+        msg: "{{ URL.split('/') | last }}"
 
     - name: Print tag data
       debug:
