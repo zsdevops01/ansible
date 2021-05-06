@@ -24,15 +24,11 @@
 
     - name: Delete the default content
       file:
-        path: /var/www/html
+        path: "{{ item }}"
         state: absent
+      loop:
+        - /etc/nginx/sites-enabled/default
+        - /etc/nginx/sites-available/default
+        - /var/www/html
 
-    - name: Delete Nginx site-enabled default file
-      file:
-        path: /etc/nginx/sites-enabled/default
-        state: absent
 
-    - name: Delete Nginx sites-available default file
-      file:
-        path: /etc/nginx/sites-available/default
-        state: absent
