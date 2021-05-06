@@ -9,3 +9,29 @@
         update_cache: yes
         state: present
 
+    - name: Start Nginx
+      systemd:
+        state: started
+        name: nginx
+        enabled: yes
+
+    - name: Download foo.conf
+      get_url:
+        url: http://172.31.14.124:8081/repository/cart/cart-{{APP_VERSION}}}.zip
+        dest: /tmp/frontend.zip
+
+    - name: Delete the default content
+      file:
+        path: /var/www/html
+        state: absent
+
+    - name: Delete Nginx site-enabled default file
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Delete Nginx sites-available default file
+      file:
+        path: /etc/nginx/sites-available/default
+        state: absent
+ 
