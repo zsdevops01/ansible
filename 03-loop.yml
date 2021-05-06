@@ -50,9 +50,9 @@
 
 
     - name: print first value
-      when: ansible_loop.first
+      #when: ansible_loop.first
       debug:
-        msg: "{{ item }}"
+        msg: "{{ ansible_loop.first }}"
       loop:
         - apple
         - banana
