@@ -1,9 +1,11 @@
 - name: Setup roboshop project
   hosts: all
   become: yes
+  ## THis become can also be used at task level
   tasks:
-    - name: Apt Update
+    - name: Install Nginx
       apt:
         name: nginx
         update_cache: yes
         state: present
+
