@@ -29,7 +29,7 @@
         label: "{{ item.name }}"
 
     - name: Count our fruit
-      ansible.builtin.debug:
+      debug:
         msg: "{{ item }} with index {{ my_idx }}"
       loop:
         - apple
@@ -37,3 +37,15 @@
         - pear
       loop_control:
         index_var: my_idx
+
+    - name: Loop variable
+      debug:
+        msg: "{{ myvar }}"
+      loop:
+        - apple
+        - banana
+        - pear
+      loop_control:
+        loop_var: myvar
+
+        
