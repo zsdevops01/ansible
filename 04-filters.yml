@@ -9,4 +9,4 @@
 
     - name: Print last colum
       debug:
-        msg: "{{ URL | split('/') }}"
+        msg: "{{ URL.split('/') }}"
