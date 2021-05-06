@@ -9,12 +9,6 @@
         update_cache: yes
         state: present
 
-    - name: Start Nginx
-      systemd:
-        state: started
-        name: nginx
-        enabled: yes
-
     - name: Download foo.conf
       get_url:
         url: http://172.31.14.124:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
@@ -36,9 +30,15 @@
         path: /var/www/html
         state: directory
 
-    - name: Unzip the Downloaded Content 
+    - name: Unzip the Downloaded Content
       unarchive:
         src: /tmp/frontend.zip
         dest: /var/www/html
         remote_src: yes
 
+    - name: Start Nginx
+      systemd:
+        state: started
+        name: nginx
+        enabled: yes
+  
