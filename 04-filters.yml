@@ -2,6 +2,9 @@
   hosts: all
   vars:
     URL: https://github.com/zelar-soft-roboshop/frontend/archive/main.zip
+    tag_data:
+          Environment: dev
+          Application: payment
   tasks:
     - name: Print filename of a url
       debug:
@@ -10,3 +13,8 @@
     - name: Print last colum
       debug:
         msg: "{{ URL.split('/').last }}"
+
+    - name: Print tag data
+      debug:
+        msg: "{{ tag_data | dict2items }}"
+
