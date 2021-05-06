@@ -1,0 +1,8 @@
+- name: Demo on filters
+  hosts: all
+  vars:
+    URL: https://github.com/zelar-soft-roboshop/frontend/archive/main.zip
+  tasks:
+    - name: Print filename of a url
+      debug:
+        msg: "{{ URL | urlsplit }}"
