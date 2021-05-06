@@ -57,3 +57,5 @@
         - apple
         - banana
         - pear
+      loop_control:
+        extended: yes
