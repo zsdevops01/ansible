@@ -51,7 +51,7 @@
 
     - name: print first value
       debug:
-        msg: "{{ ansible_loop.first }}"
+        msg: "{{ ansible_loop }}"
       loop:
         - apple
         - banana
