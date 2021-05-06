@@ -48,4 +48,11 @@
       loop_control:
         loop_var: myvar
 
-        
+
+    - name: print first value
+      debug:
+        msg: "{{ ansible_loop.first }}"
+      loop:
+        - apple
+        - banana
+        - pear
