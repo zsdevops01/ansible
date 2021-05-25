@@ -1,0 +1,11 @@
+- name: Demo on Conditions
+  hosts: all
+  tasks:
+    - name: Print CentOS
+      debug:
+        msg: Hello CentOS
+
+    - name: Print Ubuntu
+      debug:
+        msg: Hello Ubuntu
+    
