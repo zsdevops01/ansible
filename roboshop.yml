@@ -5,7 +5,10 @@
   roles:
     - role: frontend
       tags: frontend
+      when: COMPONENT == "frontend"
 
     - role: mongodb
       tags: mongodb
+      when: COMPONENT == "mongodb"
+
 
