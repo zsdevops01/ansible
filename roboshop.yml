@@ -3,5 +3,9 @@
   become: yes
   ## THis become can also be used at task level
   roles:
-    - frontend
-     - mongodb
+    - role: frontend
+      tags: frontend
+
+    - role: mongodb
+      tags: mongodb
+
