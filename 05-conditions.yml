@@ -4,7 +4,9 @@
     - name: Print CentOS
       debug:
         msg: Hello CentOS
+      when: OS == "CentOS"
 
     - name: Print Ubuntu
       debug:
         msg: Hello Ubuntu
+      when: OS == "Ubuntu"
