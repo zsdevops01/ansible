@@ -35,6 +35,9 @@
     remote_src: yes
 
 - name: Load Schema
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/users.js"
-    #idempotent: yes
+  shell: mongo < /tmp/mongodb-main/{{item}}.js
+  loop:
+    - users
+    - catalogue
+
+
