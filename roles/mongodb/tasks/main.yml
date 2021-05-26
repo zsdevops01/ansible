@@ -1,4 +1,20 @@
-- name: Print MongoDB
-  debug:
-    msg: MongoDB
-    
+- name: Add MongoDB Key
+  apt_key:
+    url: https://www.mongodb.org/static/pgp/server-4.4.asc
+    state: present
+
+- name: Add MongoDB repository into sources list
+  apt_repository:
+    repo: deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse
+    state: present
+
+- name: Upate Cache
+  apt:
+    update_cache: yes
+
+- name: Install MongoDB Package
+  apt:
+    name: mongodb-org
+    state: present
+
+
