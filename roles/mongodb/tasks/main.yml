@@ -23,3 +23,15 @@
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
+- name: Start MongoDB Service
+  systemd:
+    name: mongod
+    state: started
+
+- name: Download schema
+  unarchive:
+    src: https://github.com/zelar-soft-roboshop/mongodb/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+    
