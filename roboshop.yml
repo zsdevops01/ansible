@@ -11,4 +11,7 @@
       tags: mongodb
       when: COMPONENT == "mongodb"
 
+    - role: catalogue
+      tags: catalogue
+      when: COMPONENT == "catalogue"
 
