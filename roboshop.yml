@@ -22,3 +22,9 @@
     - role: user
       tags: user
       when: COMPONENT == "user"
+
+    - role: cart
+      tags: cart
+      when: COMPONENT == "cart"
+
+      
