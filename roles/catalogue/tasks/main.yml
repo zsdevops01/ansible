@@ -36,6 +36,18 @@
     owner: roboshop
     group: roboshop
 
+- name: Copy Catalogue Service file
+  copy:
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Start Catalogue Service
+  systemd:
+    name: catalogue
+    daemon_reload: yes
+    state: started
+    enabled: yes
+
 
 
 
