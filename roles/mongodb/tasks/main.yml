@@ -27,7 +27,7 @@
   systemd:
     name: mongod
     state: started
-    enabled: yes 
+    enabled: yes
 
 - name: Download schema
   unarchive:
