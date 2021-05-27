@@ -7,4 +7,6 @@
 - name: Add roboshop user
   user:
     name: roboshop
+    shell: /bin/bash
+
 
