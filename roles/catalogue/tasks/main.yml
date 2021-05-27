@@ -33,6 +33,9 @@
     src: /tmp/catalogue.zip
     dest: /home/roboshop/catalogue
     remote_src: yes
-  become_user: roboshop
+    owner: roboshop
+    group: roboshop
+
+
 
 
