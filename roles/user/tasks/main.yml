@@ -1,0 +1,53 @@
+- name: Install NPM
+  apt:
+    name: npm
+    state: present
+    update_cache: yes
+
+- name: Add roboshop user
+  user:
+    name: roboshop
+    shell: /bin/bash
+
+- name: Download User from Nexus
+  get_url:
+    url: http://172.31.14.124:8081/repository/user/user-{{APP_VERSION}}.zip
+    dest: /tmp/user.zip
+    username: admin
+    password: admin123
+
+- name: Clean the old artifacts
+  file:
+    path: /home/roboshop/user
+    state: absent
+
+- name: Create the artifact path
+  file:
+    path: /home/roboshop/user
+    state: directory
+    owner: roboshop
+    group: roboshop
+
+- name: Extract the User Content
+  unarchive:
+    src: /tmp/user.zip
+    dest: /home/roboshop/user
+    remote_src: yes
+    owner: roboshop
+    group: roboshop
+
+- name: Copy User Service file
+  copy:
+    src: user.service
+    dest: /etc/systemd/system/user.service
+
+- name: Start User Service
+  systemd:
+    name: user
+    daemon_reload: yes
+    state: started
+    enabled: yes
+
+
+
+
