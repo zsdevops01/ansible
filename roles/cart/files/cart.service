@@ -1,0 +1,11 @@
+[Unit]
+Description = Cart Service
+[Service]
+User=roboshop
+Environment=REDIS_HOST=redis.zsdevops01.online
+Environment=CATALOGUE_HOST=catalogue.zsdevops01.online
+ExecStart=/bin/node /home/roboshop/cart/server.js
+SyslogIdentifier=cart
+
+[Install]
+WantedBy=multi-user.target
