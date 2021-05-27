@@ -25,12 +25,13 @@
   file:
     path: /home/roboshop/catalogue
     state: directory
+  become_user: roboshop
 
 - name: Extract the Catalogue Content
   unarchive:
     src: /tmp/catalogue.zip
     dest: /home/roboshop/catalogue
     remote_src: yes
+  become_user: roboshop
 
 
-    
