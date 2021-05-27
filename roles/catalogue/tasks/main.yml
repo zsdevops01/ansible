@@ -25,7 +25,8 @@
   file:
     path: /home/roboshop/catalogue
     state: directory
-  become_user: roboshop
+    owner: roboshop
+    group: roboshop
 
 - name: Extract the Catalogue Content
   unarchive:
