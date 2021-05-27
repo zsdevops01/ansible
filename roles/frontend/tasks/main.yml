@@ -31,8 +31,13 @@
     dest: /var/www/html
     remote_src: yes
 
+- name: Update RoboShop Config file
+  copy:
+    src: roboshop.conf
+    dest: /etc/nginx/sites-enabled/roboshop.conf
+
 - name: Start Nginx
   systemd:
-    state: started
+    state: restarted
     name: nginx
     enabled: yes
