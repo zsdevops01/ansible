@@ -41,3 +41,12 @@
     state: present
     update_cache: yes
 
+- name: Add Application User to RabbitMQ
+  rabbitmq_user:
+    user: roboshop
+    password: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
