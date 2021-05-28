@@ -34,4 +34,3 @@
     - role: shipping
       tags: shipping
       when: COMPONENT == "shipping"
-      
