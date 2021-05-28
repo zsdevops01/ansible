@@ -16,10 +16,11 @@
     state: present
     update_cache: yes
 
-- name: Add RabbitMQ repository into sources list
-  apt_repository:
-    repo: "{{item}}"
-    state: present
+- name: Add RabbitMQ Repo files
+  lineinfile:
+    path: /etc/apt/sources.list.d/bintray.rabbitmq.list
+    line: "{{loop}}"
+    create: yes
   loop:
     - "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang"
     - "deb https://dl.bintray.com/rabbitmq/debian bionic main"
