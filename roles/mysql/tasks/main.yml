@@ -2,12 +2,9 @@
   shell: systemctl status docker
   register: out
 
-- name: Print status
-  debug:
-    msg: "{{out}}"
-
 - name: Install Docker
   shell: curl -s https://get.docker.com | bash
+  when: out.rc != 0
 
 - name: Start Docker
   systemd:
