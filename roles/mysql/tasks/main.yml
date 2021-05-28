@@ -10,8 +10,8 @@
 - name: Install Pip3
   apt:
     name: python3-pip
-    state: installed
-    update_cache: yes 
+    state: present
+    update_cache: yes
 
 - name: Create MySQL Data directory
   file:
