@@ -1,0 +1,31 @@
+- name: Add roboshop user
+  user:
+    name: roboshop
+    shell: /bin/bash
+
+- name: Download {{COMPONENT}} from Nexus
+  get_url:
+    url: http://172.31.14.124:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+    dest: /tmp/{{COMPONENT}}.zip
+    username: admin
+    password: admin123
+
+- name: Clean the old artifacts
+  file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: absent
+
+- name: Create the artifact path
+  file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: directory
+    owner: roboshop
+    group: roboshop
+
+- name: Extract the {{COMPONENT}} Content
+  unarchive:
+    src: /tmp/{{COMPONENT}}.zip
+    dest: /home/roboshop/{{COMPONENT}}
+    remote_src: yes
+    owner: roboshop
+    group: roboshop

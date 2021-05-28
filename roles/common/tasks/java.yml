@@ -1,6 +1,6 @@
-- name: Install NPM
+- name: Install Maven
   apt:
-    name: npm
+    name: maven
     state: present
     update_cache: yes
 
@@ -9,9 +9,5 @@
 
 - name: Setup SystemD Service
   include_tasks: setup-systemd.yml
-
-
-
-
 
 
