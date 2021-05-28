@@ -20,9 +20,11 @@
 
 - name: Install Pip3 Docker Python Module
   pip:
-    name: docker
+    name: "{{item}}"
     executable: pip3
-
+  loop:
+    - PyMySQL
+    - docker
 - name: Create MySQL Data directory
   file:
     path: /data
