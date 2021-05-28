@@ -19,7 +19,7 @@
 - name: Add RabbitMQ Repo files
   lineinfile:
     path: /etc/apt/sources.list.d/bintray.rabbitmq.list
-    line: "{{loop}}"
+    line: "{{item}}"
     create: yes
   loop:
     - "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang"
