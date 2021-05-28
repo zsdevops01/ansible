@@ -27,3 +27,6 @@
       tags: cart
       when: COMPONENT == "cart"
 
+    - role: mysql
+      tags: mysql
+      when: COMPONENT == "mysql"
