@@ -39,3 +39,6 @@
       tags: rabbitmq
       when: COMPONENT == "rabbitmq"
 
+    - role: payment
+      tags: payment
+      when: COMPONENT == "payment"
