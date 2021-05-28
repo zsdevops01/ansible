@@ -34,3 +34,8 @@
     - role: shipping
       tags: shipping
       when: COMPONENT == "shipping"
+
+    - role: rabbitmq
+      tags: rabbitmq
+      when: COMPONENT == "rabbitmq"
+
