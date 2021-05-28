@@ -1,3 +1,11 @@
+- name: Check the status of Docker Service
+  shell: systemctl status docker
+  register: out
+
+- name: Print status
+  debug:
+    msg: "{{out}}"
+
 - name: Install Docker
   shell: curl -s https://get.docker.com | bash
 
