@@ -23,14 +23,14 @@
     path: /data
     state: directory
 
-#- name: Create a MySQL container
-#  docker_container:
-#    name: mysql
-#    image: mysql:5.7.33
-#    volumes:
-#      - "/data:/var/lib/mysql"
-#    ports:
-#      - "3306:3306"
-#    env:
-#      MYSQL_ROOT_PASSWORD: "password"
+- name: Create a MySQL container
+  docker_container:
+    name: mysql
+    image: mysql:5.7.33
+    volumes:
+      - "/data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    env:
+      MYSQL_ROOT_PASSWORD: "password"
 
