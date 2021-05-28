@@ -39,3 +39,21 @@
     env:
       MYSQL_ROOT_PASSWORD: "password"
 
+- name: Download schema
+  unarchive:
+    src: https://github.com/zelar-soft-roboshop/mysql/archive/refs/heads/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Load Schema to MySQL
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_host: "{{ansible_default_ipv4.address}}"
+    login_user: root
+    login_password: password
+
+
+
+
