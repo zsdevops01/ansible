@@ -7,8 +7,8 @@
 
 - name: Add an apt key by id from a keyserver
   ansible.builtin.apt_key:
-    keyserver: keys.openpgp.org
-    id: 0x0A9AF2115F4687BD29803A206B73A36E6026DFCA
+    keyserver: "hkps://keys.openpgp.org"
+    id: "0x0A9AF2115F4687BD29803A206B73A36E6026DFCA"
 
 - name: Add RabbitMQ Key
   apt_key:
