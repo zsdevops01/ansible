@@ -25,7 +25,7 @@
   loop:
     - PyMySQL
     - docker
-    -
+
 - name: Create MySQL Data directory
   file:
     path: /data
@@ -47,6 +47,11 @@
     src: https://github.com/zelar-soft-roboshop/mysql/archive/refs/heads/main.zip
     dest: /tmp
     remote_src: yes
+
+- name: Install MySQL Client
+  apt:
+    name: mysql-client-core-8.0
+    state: present
 
 - name: Load Schema to MySQL
   mysql_db:
