@@ -12,6 +12,10 @@
     requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
     executable: pip3
 
+- name: debug
+  debug:
+    msg: "{{roboshop_user_info}}"
+
 #- name: Setup SystemD Service
 #  include_tasks: setup-systemd.yml
 

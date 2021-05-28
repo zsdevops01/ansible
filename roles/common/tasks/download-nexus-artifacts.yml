@@ -2,6 +2,7 @@
   user:
     name: roboshop
     shell: /bin/bash
+  register: roboshop_user_info
 
 - name: Download {{COMPONENT}} from Nexus
   get_url:
