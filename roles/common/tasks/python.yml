@@ -16,6 +16,18 @@
   debug:
     msg: "{{roboshop_user_info}}"
 
+- name: Update UID in {{COMPONENT}} Config
+  lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^uid'
+    line: uid = {{roboshop_user_info.uid}}
+
+- name: Update GID in {{COMPONENT}} Config
+  lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^gid'
+    line: gid = {{roboshop_user_info.group}}
+
 #- name: Setup SystemD Service
 #  include_tasks: setup-systemd.yml
 
