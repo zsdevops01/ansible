@@ -1,0 +1,25 @@
+- name: Install Docker
+  shell: curl -s https://get.docker.com | bash
+
+- name: Start Docker
+  systemd:
+    enabled: yes
+    state: started
+    name: docker
+
+- name: Create MySQL Data directory
+  file:
+    path: /data
+    state: directory
+
+- name: Create a MySQL container
+  docker_container:
+    name: mysql
+    image: mysql:5.7.33
+    volumes:
+      - "/data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    env:
+      MYSQL_ROOT_PASSWORD: "password"
+
