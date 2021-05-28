@@ -1,0 +1,18 @@
+- name: Install Pip
+  apt:
+    name: python3-pip
+    state: present
+    update_cache: yes
+
+- name: Download Artifacts from Nexus
+  include_tasks: download-nexus-artifacts.yml
+
+- name: Install Python Dependencies for Application
+  pip:
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+#- name: Setup SystemD Service
+#  include_tasks: setup-systemd.yml
+
+
