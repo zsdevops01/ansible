@@ -5,25 +5,35 @@
 # apt update -y
 # apt install rabbitmq-server -y --fix-missing
 
+- name: Add an apt key by id from a keyserver
+  ansible.builtin.apt_key:
+    keyserver: keys.openpgp.org
+    id: 0x0A9AF2115F4687BD29803A206B73A36E6026DFCA
+
 - name: Add RabbitMQ Key
   apt_key:
-    url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+    url: "{{item}}"
     state: present
+  loop:
+    - "https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key"
+    - "https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/gpg.9F4587F226208342.key"
 
-- name: Install apt-transport-https Package
+- name: Install Pre-Req Package
   apt:
-    name: apt-transport-https
+    name: [ "curl", "gnupg", "debian-keyring", "debian-archive-keyring", "apt-transport-https" ]
     state: present
     update_cache: yes
 
 - name: Add RabbitMQ Repo files
   lineinfile:
-    path: /etc/apt/sources.list.d/bintray.rabbitmq.list
+    path: /etc/apt/sources.list.d/rabbitmq.list
     line: "{{item}}"
     create: yes
   loop:
-    - "deb https://dl.bintray.com/rabbitmq-erlang/debian focal erlang"
-    - "deb https://dl.bintray.com/rabbitmq/debian bionic main"
+    - deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/deb/ubuntu focal main
+    - deb-src https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/deb/ubuntu focal main
+    - deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/ubuntu focal main
+    - deb-src https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/ubuntu focal main
 
 - name: Install RabbitMQ Package
   apt:
