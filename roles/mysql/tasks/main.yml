@@ -18,13 +18,14 @@
     state: present
     update_cache: yes
 
-- name: Install Pip3 Docker Python Module
+- name: Install Pip3 Python Modules
   pip:
     name: "{{item}}"
     executable: pip3
   loop:
     - PyMySQL
     - docker
+    -
 - name: Create MySQL Data directory
   file:
     path: /data
