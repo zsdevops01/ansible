@@ -6,7 +6,7 @@
   shell: curl -s https://get.docker.com | bash
   when: out.rc != 0
 
-- name: Start Docker
+- name: Start Docker Service
   systemd:
     enabled: yes
     state: started
@@ -17,6 +17,11 @@
     name: python3-pip
     state: present
     update_cache: yes
+
+- name: Install Pip3 Docker Python Module
+  pip:
+    name: docker
+    executable: pip3
 
 - name: Create MySQL Data directory
   file:
