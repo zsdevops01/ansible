@@ -1,6 +1,7 @@
 - name: Check the status of Docker Service
   shell: systemctl status docker
   register: out
+  ignore_errors: yes
 
 - name: Install Docker
   shell: curl -s https://get.docker.com | bash
