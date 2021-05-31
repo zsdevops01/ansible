@@ -1,5 +1,5 @@
 - name: Copy {{COMPONENT}} Service file
-  copy:
+  template:
     src: "{{COMPONENT}}.service"
     dest: /etc/systemd/system/{{COMPONENT}}.service
 

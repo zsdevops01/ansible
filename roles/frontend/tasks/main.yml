@@ -32,7 +32,7 @@
     remote_src: yes
 
 - name: Update RoboShop Config file
-  copy:
+  template:
     src: roboshop.conf
     dest: /etc/nginx/sites-enabled/roboshop.conf
 
