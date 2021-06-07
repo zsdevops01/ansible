@@ -17,7 +17,7 @@
 
     - name: Download Node Exporter
       unarchive:
-        src: "{{node_exporter_url}}"
+        src: "{{node_exporter_url.stdout}}"
         dest: /opt
         remote_src: yes
 
