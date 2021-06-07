@@ -4,7 +4,7 @@
 
 - name: Grab filename and Directory Name from the URL
   set_fact:
-    FILENAME: "{{node_expoter_version.split('/')}} | last"
+    FILENAME: "{{node_expoter_version.split('/')}}"
 
 - name: Debug
   debug:
