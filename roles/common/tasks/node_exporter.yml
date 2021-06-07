@@ -1,0 +1,8 @@
+- name: Find the URL of Node_Exporter Latest Version
+  uri:
+    url: https://prometheus.io/download/
+  register: prom-url-output
+
+- name: Output
+  debug:
+    msg: "{{prom-url-output}}"
