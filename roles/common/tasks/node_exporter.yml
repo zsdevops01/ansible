@@ -1,13 +1,41 @@
-- name: Find the URL of Node_Exporter Latest Version
-  shell: curl -L -s https://prometheus.io/download/  | grep tar | grep node_exporter | grep linux-amd64  | sed -e "s|>| |g" -e 's|<| |g' -e 's|"| |g' |xargs -n1 | grep ^http
-  register: node_exporter_version
+- name: Validate exisiting Installation
+  stat:
+    path: /opt/node_exporter
+  register: dir_check
 
-- name: Grab filename and Directory Name from the URL
-  set_fact:
-    FILENAME: "{{node_exporter_version.stdout.split('/') | last}}"
-    DIRNAME: "{{ node_exporter_version.stdout.split('/') | last | regex_replace('.tar.gz', '')  }}"
+- name: Install and Configure Node Exporter
+  when: not foo_stat.stat.exists
+  block:
+    - name: Find the URL of Node_Exporter Latest Version URL
+      shell: curl -L -s https://prometheus.io/download/  | grep tar | grep node_exporter | grep linux-amd64  | sed -e "s|>| |g" -e 's|<| |g' -e 's|"| |g' |xargs -n1 | grep ^http
+      register: node_exporter_url
 
-- name: Debug
-  debug:
-    msg: "{{FILENAME}}  , {{ DIRNAME }}"
+    - name: Grab filename and Directory Name from the URL
+      set_fact:
+        FILENAME: "{{node_exporter_url.stdout.split('/') | last}}"
+        DIRNAME: "{{ node_exporter_url.stdout.split('/') | last | regex_replace('.tar.gz', '')  }}"
+
+    - name: Download Node Exporter
+      unarchive:
+        src: "{{node_exporter_url}}"
+        dest: /opt
+        remote_src: yes
+
+    - name: Rename to Standard Name
+      shell: mv /opt/{{DIRNAME}} /opt/node_exporter
+
+    - name: Copy SystemdD Script
+      copy:
+        src: node_exporter.service
+        dest: /etc/systemd/system/node_exporter.service
+
+    - name: Start Node_exporter service
+      systemd:
+        name: node_exporter
+        state: started
+        enabled: yes
+        daemon_reload: yes
+
+
+
 
