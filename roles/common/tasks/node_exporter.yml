@@ -1,6 +1,7 @@
 - name: Find the URL of Node_Exporter Latest Version
   uri:
     url: https://prometheus.io/download/
+    return_content: yes
   register: prom_url_output
 
 - name: Output
