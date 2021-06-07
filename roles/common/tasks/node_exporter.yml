@@ -2,10 +2,11 @@
   shell: curl -L -s https://prometheus.io/download/  | grep tar | grep node_exporter | grep linux-amd64  | sed -e "s|>| |g" -e 's|<| |g' -e 's|"| |g' |xargs -n1 | grep ^http
   register: node_expoter_version
 
+- name: Grab filename and Directory Name from the URL
+  set_fact:
+    FILENAME: "{{node_expoter_version.split('/')}} | last"
+
 - name: Debug
   debug:
-    msg: "{{node_expoter_version}}"
-
-
-
+    msg: "{{FILENAME}}"
 
