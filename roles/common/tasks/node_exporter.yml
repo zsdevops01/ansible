@@ -1,9 +1,11 @@
 - name: Find the URL of Node_Exporter Latest Version
-  uri:
-    url: https://prometheus.io/download/
-    return_content: yes
-  register: prom_url_output
+  shell: curl -L -s https://prometheus.io/download/  | grep tar | grep node_exporter | grep linux-amd64  | sed -e "s|>| |g" -e 's|<| |g' -e 's|"| |g' |xargs -n1 | grep ^http
+  register: node_expoter_version
 
-- name: Output
+- name: Debug
   debug:
-    msg: "{{prom_url_output}}"
+    msg: "{{node_expoter_version}}"
+
+
+
+
