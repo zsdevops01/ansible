@@ -1,0 +1,22 @@
+- name: Install Apt Addons
+  apt:
+    name: apt-transport-https
+    state: present
+    update_cache: yes
+
+- name: Add Filebeat Key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add Filebeat repository into sources list
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
+
+- name: Install Filebeat
+  apt:
+    name: filebeat
+    state: present
+    update_cache: yes
+

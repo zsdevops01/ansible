@@ -48,3 +48,8 @@
     name: common
     tasks_from: node_exporter
 
+- name: Install Filebeat Monitoring
+  include_role:
+    name: common
+    tasks_from: filebeat
+
