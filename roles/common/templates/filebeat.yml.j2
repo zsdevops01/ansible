@@ -1,8 +1,10 @@
 filebeat.inputs:
+{% for log_filename in LOG_FILES %}
 - type: log
-  enabled: false
+  enabled: true
   paths:
-    - /var/log/
+    - {{ value }}
+{% endfor %}
 
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml

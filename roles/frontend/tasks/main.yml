@@ -54,5 +54,10 @@
     tasks_from: filebeat
   vars:
     IS_STRUCTURED: true
+    LOG_FILES:
+      - /var/log/nginx/access.log
+      - /var/log/nginx/error.log
+
+
 
 
