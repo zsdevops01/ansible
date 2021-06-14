@@ -22,6 +22,6 @@
   vars:
     IS_STRUCTURED: true
     LOG_FILES:
-      - { file: "/var/log/nginx/access.log", type: "nginx_access" }
+      - { file: "/var/log/{{COMPONENT}}.log", type: "catalogue" }
 
 
