@@ -1,0 +1,22 @@
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /var/log/
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+{% if IS_STRUCTURED %}
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+{% else %}
+output.logstash:
+  hosts: ["localhost:5044"]
+{% endif %}
+
+
