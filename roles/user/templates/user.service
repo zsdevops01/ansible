@@ -4,7 +4,7 @@ Description = User Service
 User=roboshop
 Environment=REDIS_HOST=redis-{{ENV}}.zsdevops01.online
 Environment=MONGO_URL="mongodb://mongodb-{{ENV}}.zsdevops01.online:27017/users"
-ExecStart=/bin/node /home/roboshop/user/server.js
+ExecStart=/bin/node --no-warnings /home/roboshop/user/server.js
 SyslogIdentifier=user
 
 [Install]

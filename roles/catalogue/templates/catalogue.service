@@ -3,7 +3,7 @@ Description = Catalogue Service
 [Service]
 User=roboshop
 Environment=MONGO_URL="mongodb://mongodb-{{ENV}}.zsdevops01.online:27017/catalogue"
-ExecStart=/bin/node /home/roboshop/catalogue/server.js
+ExecStart=/bin/node --no-warnings /home/roboshop/catalogue/server.js
 SyslogIdentifier=catalogue
 
 [Install]
