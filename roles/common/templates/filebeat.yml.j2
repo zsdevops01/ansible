@@ -6,13 +6,6 @@ filebeat.inputs:
     - {{ value }}
 {% endfor %}
 
-filebeat.config.modules:
-  path: ${path.config}/modules.d/*.yml
-  reload.enabled: false
-
-setup.template.settings:
-  index.number_of_shards: 1
-
 {% if IS_STRUCTURED %}
 output.elasticsearch:
   hosts: ["localhost:9200"]
@@ -21,4 +14,12 @@ output.logstash:
   hosts: ["localhost:5044"]
 {% endif %}
 
+
+## These always are defaults
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
 
