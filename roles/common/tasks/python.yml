@@ -38,6 +38,7 @@
     tasks_from: filebeat
   vars:
     IS_STRUCTURED: false
+    IS_PYTHON: true
     LOG_FILES:
       - { file: "/var/log/{{COMPONENT}}.log", type: "{{COMPONENT}}" }
 
