@@ -42,6 +42,7 @@
       - "3306:3306"
     env:
       MYSQL_ROOT_PASSWORD: "password"
+    restart_policy: always
 
 - name: Download schema
   unarchive:
