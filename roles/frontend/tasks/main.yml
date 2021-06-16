@@ -37,6 +37,11 @@
     dest: /etc/nginx/sites-enabled/roboshop.conf
   notify: Restart Nginx
 
+- name: Update Nginx Main Config
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: Start Nginx
   systemd:
     state: started
