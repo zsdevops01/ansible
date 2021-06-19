@@ -5,7 +5,7 @@ Description=Shipping Service
 User=roboshop
 Environment=CART_ENDPOINT=cart-{{ENV}}.zsdevops01.online:8080
 Environment=DB_HOST=mysql-{{ENV}}.zsdevops01.online
-ExecStart=/bin/java -jar /home/roboshop/shipping/shipping.jar
+ExecStart=/bin/java -Xms3072m -Xmx3072m -jar /home/roboshop/shipping/shipping.jar
 SyslogIdentifier=shipping
 
 [Install]
